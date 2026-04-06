@@ -15,8 +15,12 @@ st.markdown("Upload your PDF document and ask questions about its content! This 
 
 # Sidebar for API Key and Document Upload
 st.sidebar.title("⚙️ Configuration")
-api_key = st.sidebar.text_input("Enter your Groq API Key:", type="password")
-st.sidebar.markdown("[Get your free API Key here](https://console.groq.com/keys)")
+if "GROQ_API_KEY" in st.secrets:
+    api_key = st.secrets["GROQ_API_KEY"]
+    st.sidebar.success("✅ Secure API Key Loaded Automatically!")
+else:
+    api_key = st.sidebar.text_input("Enter your Groq API Key:", type="password")
+    st.sidebar.markdown("[Get your free API Key here](https://console.groq.com/keys)")
 
 st.sidebar.markdown("---")
 st.sidebar.title("🤖 Chat Model Config")
