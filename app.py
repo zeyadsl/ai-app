@@ -65,7 +65,7 @@ def get_conversational_chain(api_key, chat_model_name):
     However, if the Context does NOT contain the answer, do NOT say "the answer is not in the context". 
     Instead, simply ignore the Context and use your own vast general knowledge to answer the user's question as best as you can!
     
-    CRITICAL INSTRUCTION: You MUST provide your final answer entirely in Arabic (اللغة العربية), regardless of the language the question was asked in or the language of the context.
+    CRITICAL INSTRUCTION: You MUST provide your final answer in the EXACT SAME LANGUAGE that the user used to ask the Question. If they ask in Arabic, answer in Arabic. If they ask in English, answer in English.
 
     Context:
     {context}
@@ -73,7 +73,7 @@ def get_conversational_chain(api_key, chat_model_name):
     Question: 
     {question}
 
-    Answer (in Arabic):
+    Answer:
     """
     
     model = ChatGroq(model_name=chat_model_name, temperature=0.3, groq_api_key=api_key)
